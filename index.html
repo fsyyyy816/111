@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>如果那时候我说出来了</title>
+
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<main id="app">
+
+
+  <!-- ==================================================
+       PAGE 1
+       数字路径
+  =================================================== -->
+
+  <section
+    id="page-input"
+    class="page page-input active"
+  >
+
+    <div class="input-left">
+
+      <div>
+
+        <p class="small-title">
+          MEMORY INPUT / 01
+        </p>
+
+        <h1>
+          如果那时候<br>
+          我说出来了
+        </h1>
+
+        <p class="description">
+          有些事情没有消失。<br>
+          它只是被留在了某一个时刻。
+        </p>
+
+      </div>
+
+
+      <div class="path-info">
+
+        <p class="label">
+          MEMORY PATH
+        </p>
+
+        <p>
+          沿着这条路径，<br>
+          找回一段被留下的记忆。
+        </p>
+
+        <div
+          id="target-sequence"
+          class="target-sequence"
+        ></div>
+
+
+        <p class="label input-label">
+          YOUR INPUT
+        </p>
+
+        <p id="input-progress">
+          等待输入
+        </p>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="input-right">
+
+      <p class="label">
+        STEP ON THE MEMORY
+      </p>
+
+
+      <div class="hopscotch">
+
+        <button data-key="9" class="hop-key single">
+          9
+        </button>
+
+
+        <button data-key="7" class="hop-key">
+          7
+        </button>
+
+        <button data-key="8" class="hop-key">
+          8
+        </button>
+
+
+        <button data-key="6" class="hop-key single">
+          6
+        </button>
+
+
+        <button data-key="4" class="hop-key">
+          4
+        </button>
+
+        <button data-key="5" class="hop-key">
+          5
+        </button>
+
+
+        <button data-key="3" class="hop-key single">
+          3
+        </button>
+
+
+        <button data-key="1" class="hop-key">
+          1
+        </button>
+
+        <button data-key="2" class="hop-key">
+          2
+        </button>
+
+      </div>
+
+
+      <p class="keyboard-tip">
+        使用键盘数字 1—9
+      </p>
+
+    </div>
+
+
+
+    <div
+      id="unlock-overlay"
+      class="unlock-overlay"
+    >
+
+      <p>
+        MEMORY FOUND
+      </p>
+
+      <h2>
+        一段记忆被你找到了
+      </h2>
+
+    </div>
+
+  </section>
+
+
+
+
+  <!-- ==================================================
+       PAGE 2A
+       视频记忆
+  =================================================== -->
+
+  <section
+    id="page-video"
+    class="page page-video"
+  >
+
+    <header class="video-header">
+
+      <div>
+
+        <p class="small-title gray">
+          MEMORY ARCHIVE / 02
+        </p>
+
+        <h2 id="video-title">
+          一段记忆
+        </h2>
+
+      </div>
+
+
+      <p
+        id="video-archive"
+        class="label gray"
+      ></p>
+
+    </header>
+
+
+    <div class="video-container">
+
+      <video
+        id="memory-video"
+        playsinline
+      ></video>
+
+
+      <button
+        id="play-video"
+        class="play-button hidden"
+      >
+        ▶ 播放记忆
+      </button>
+
+
+      <div
+        id="video-error"
+        class="video-error hidden"
+      >
+
+        <h3>
+          视频没有找到
+        </h3>
+
+        <p>
+          请检查 videos 文件夹中的文件名
+        </p>
+
+        <button
+          id="skip-video"
+          class="white-button"
+        >
+          继续
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <p
+      id="video-status"
+      class="video-status"
+    >
+      MEMORY IS LOADING
+    </p>
+
+  </section>
+
+
+
+
+  <!-- ==================================================
+       PAGE 2B
+       照片 + 逐字故事
+  =================================================== -->
+
+  <section
+    id="page-story"
+    class="page page-story"
+  >
+
+    <div class="story-photo">
+
+      <img
+        id="story-image"
+        src=""
+        alt="记忆照片"
+      >
+
+
+      <div
+        id="image-error"
+        class="image-error hidden"
+      >
+        MEMORY IMAGE
+      </div>
+
+    </div>
+
+
+
+    <div class="story-content">
+
+      <p class="small-title">
+        MEMORY ARCHIVE / 02
+      </p>
+
+
+      <p
+        id="story-archive"
+        class="label"
+      ></p>
+
+
+      <h2 id="story-title"></h2>
+
+
+      <div
+        id="story-scroll"
+        class="story-scroll"
+      >
+
+        <span id="story-text"></span>
+
+        <span
+          id="typing-cursor"
+          class="typing-cursor"
+        ></span>
+
+      </div>
+
+
+      <div
+        id="story-question"
+        class="story-question hidden"
+      ></div>
+
+    </div>
+
+  </section>
+
+
+
+
+  <!-- ==================================================
+       PAGE 3
+       写自己的故事
+  =================================================== -->
+
+  <section
+    id="page-write"
+    class="page page-write"
+  >
+
+    <div class="write-left">
+
+      <p class="small-title">
+        LEAVE YOUR STORY / 03
+      </p>
+
+      <h2>
+        现在，<br>
+        轮到你留下些什么。
+      </h2>
+
+      <p class="description">
+        写下一件你记得很久的事。<br>
+        它可以很小，<br>
+        也可以从来没有告诉过别人。
+      </p>
+
+    </div>
+
+
+
+    <div class="write-right">
+
+      <article
+        id="user-note"
+        class="sticky-note"
+      >
+
+        <header>
+
+          <span>
+            UNSPOKEN MEMORY
+          </span>
+
+          <span id="note-date"></span>
+
+        </header>
+
+
+        <textarea
+          id="story-input"
+          maxlength="260"
+          placeholder="在这里写下你的故事……"
+        ></textarea>
+
+
+        <footer>
+
+          <span>
+            IF I HAD SAID IT THEN
+          </span>
+
+          <span id="character-count">
+            0 / 260
+          </span>
+
+        </footer>
+
+      </article>
+
+
+      <button
+        id="finish-story"
+        class="main-button"
+        disabled
+      >
+        写好了
+      </button>
+
+    </div>
+
+  </section>
+
+
+
+
+  <!-- ==================================================
+       PAGE 4
+       揉成纸团
+  =================================================== -->
+
+  <section
+    id="page-crumple"
+    class="page page-crumple"
+  >
+
+    <p class="small-title">
+      KEEP IT HERE / 04
+    </p>
+
+    <h2>
+      把它留在这里吧。
+    </h2>
+
+
+    <div class="crumple-stage">
+
+      <article
+        id="crumple-note"
+        class="sticky-note crumple-note"
+      >
+
+        <header>
+
+          <span>
+            UNSPOKEN MEMORY
+          </span>
+
+          <span>
+            YOU
+          </span>
+
+        </header>
+
+
+        <div
+          id="crumple-text"
+          class="crumple-text"
+        ></div>
+
+
+        <footer>
+
+          <span>
+            IF I HAD SAID IT THEN
+          </span>
+
+        </footer>
+
+      </article>
+
+
+      <div
+        id="your-paper-ball"
+        class="paper-ball your-paper-ball"
+      ></div>
+
+    </div>
+
+  </section>
+
+
+
+
+  <!-- ==================================================
+       PAGE 5
+       记忆池
+  =================================================== -->
+
+  <section
+    id="page-pool"
+    class="page page-pool"
+  >
+
+    <div class="pool-title">
+
+      <p class="small-title gray">
+        MEMORY POOL / 05
+      </p>
+
+      <h2>
+        每一张纸里，<br>
+        都有一个没有说完的故事。
+      </h2>
+
+      <p>
+        输入一个 0—100 之间，<br>
+        此刻出现在你脑海里的数字。
+      </p>
+
+    </div>
+
+
+
+    <div class="number-area">
+
+      <input
+        id="random-number"
+        type="number"
+        min="0"
+        max="100"
+        placeholder="00"
+      >
+
+
+      <button
+        id="draw-memory"
+        class="main-button light-button"
+        disabled
+      >
+        寻找一段记忆
+      </button>
+
+
+      <p id="number-error"></p>
+
+    </div>
+
+
+
+    <div
+      id="memory-pool"
+      class="memory-pool"
+    ></div>
+
+  </section>
+
+
+
+
+  <!-- ==================================================
+       PAGE 6
+       手取纸团
+  =================================================== -->
+
+  <section
+    id="page-draw"
+    class="page page-draw"
+  >
+
+    <p class="small-title gray">
+      EXCHANGE MEMORY / 06
+    </p>
+
+
+    <h2 id="draw-message">
+      正在寻找与你交换的记忆……
+    </h2>
+
+
+    <div class="draw-stage">
+
+      <div
+        id="chosen-ball"
+        class="paper-ball chosen-ball"
+      ></div>
+
+
+      <div
+        id="hand"
+        class="hand"
+      >
+
+        <div class="palm"></div>
+
+        <div class="finger finger1"></div>
+
+        <div class="finger finger2"></div>
+
+        <div class="finger finger3"></div>
+
+        <div class="finger finger4"></div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+
+  <!-- ==================================================
+       PAGE 7
+       陌生人的故事
+  =================================================== -->
+
+  <section
+    id="page-exchange"
+    class="page page-exchange"
+  >
+
+    <p class="small-title">
+      FROM / SOMEONE
+    </p>
+
+
+    <article
+      id="exchange-note"
+      class="sticky-note exchange-note"
+    >
+
+      <header>
+
+        <span>
+          ANOTHER MEMORY
+        </span>
+
+        <span id="exchange-number">
+          01
+        </span>
+
+      </header>
+
+
+      <div
+        id="exchange-text"
+        class="exchange-text"
+      ></div>
+
+
+      <footer>
+
+        <span>
+          FROM / SOMEONE
+        </span>
+
+        <span>
+          MEMORY ARCHIVE
+        </span>
+
+      </footer>
+
+    </article>
+
+
+
+    <div
+      id="ending"
+      class="ending hidden"
+    >
+
+      <p>
+        这是一个陌生人留下的故事。
+      </p>
+
+      <h3>
+        有些话没有消失，<br>
+        只是换了一个人听见。
+      </h3>
+
+
+      <button
+        id="restart"
+        class="main-button"
+      >
+        留给下一个人
+      </button>
+
+    </div>
+
+  </section>
+
+
+
+
+  <!-- 管理员重置 -->
+
+  <button
+    id="reset-button"
+    class="reset-button"
+  >
+    R · RESET
+  </button>
+
+
+</main>
+
+
+<!-- 背景音乐 -->
+<audio
+  id="background-music"
+  src="audio/background.mp3"
+  loop
+  preload="auto">
+</audio>
+
+
+<script src="app.js"></script>
+
+
+</body>
+
+</html>
